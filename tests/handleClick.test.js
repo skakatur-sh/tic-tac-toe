@@ -5,14 +5,14 @@
 import React from "react";
 import { render, screen, fireEvent } from '@testing-library/react'
 
-import { Board } from "../src/App"
+import { Board, Square } from "../src/App"
 import { checkWin } from "../src/App";
 
 
 test("Alternate Square Clicking Test", () => {
     render(<Board/>);
 
-    const unclickedSquares = screen.getAllByRole('button');
+    const unclickedSquares = document.getElementsByClassName("square");
     let squareValues = [];
     expect(unclickedSquares.length).toBe(9);
 
@@ -49,7 +49,7 @@ test("Alternate Square Clicking Test", () => {
 test("Speedrun Test", () => {
     render(<Board/>)
 
-    const unclickedSquares = screen.getAllByRole('button');
+    const unclickedSquares = document.getElementsByClassName("square");
     let squareValues = [];
     expect(unclickedSquares.length).toBe(9);
 
