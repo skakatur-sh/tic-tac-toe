@@ -8,6 +8,14 @@ export const Square = ({ value, onSquareClick }) => {
   );
 };
 
+export const ResetButton = ({onResetClick}) => {
+  return (
+    <button className="resetButton" onClick={onResetClick}>
+      Reset
+    </button>
+  );
+};
+
 export const Board = () => {
   const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState([]);
@@ -26,8 +34,7 @@ export const Board = () => {
     const nextSquares = squares.slice();
     if (xIsNext) {
       nextSquares[i] = "X";
-    } 
-    else {
+    } else {
       nextSquares[i] = "O";
     }
 
@@ -35,12 +42,16 @@ export const Board = () => {
     setXIsNext(!xIsNext);
   };
 
+  const handleReset = () => {
+    setSquares([]);
+    setXIsNext(true);
+  }
+
   const winner = checkWin(squares);
   let status;
   if (winner) {
     status = "Winner: " + winner + "!!";
-  } 
-  else {
+  } else {
     status = "Next turn: " + (xIsNext ? "X" : "O");
   }
 
@@ -61,6 +72,9 @@ export const Board = () => {
         <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
+      </div>
+      <div className="reset">
+        <ResetButton onResetClick={handleReset} />
       </div>
     </div>
   );
