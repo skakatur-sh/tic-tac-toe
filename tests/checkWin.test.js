@@ -1,6 +1,4 @@
-const { checkWin } = require("../src/checkWin");
-
-// import { checkWin } from "../src/checkWin";
+const { checkWin } = require("../src/App");
 
 test('No win possible ', () => {
     expect(checkWin(
