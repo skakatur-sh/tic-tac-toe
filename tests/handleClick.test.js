@@ -8,8 +8,9 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { Board } from "../src/App"
 import { checkWin } from "../src/App";
 
-test("All Squares Clicked Test", () => {
-    render(<Board />)
+
+test("Alternate Square Clicking Test", () => {
+    render(<Board/>);
 
     const unclickedSquares = screen.getAllByRole('button');
     let squareValues = [];
@@ -42,5 +43,45 @@ test("All Squares Clicked Test", () => {
             }
         }
     }
+
+});
+
+test("Speedrun Test", () => {
+    render(<Board/>)
+
+    const unclickedSquares = screen.getAllByRole('button');
+    let squareValues = [];
+    expect(unclickedSquares.length).toBe(9);
+
+    let button = unclickedSquares[0];
+    fireEvent.click(button);
+    expect(button.innerHTML).toBe("X");
+    squareValues[0] = button.innerHTML;
+
+    button = unclickedSquares[4];
+    fireEvent.click(button);
+    expect(button.innerHTML).toBe("O");
+    squareValues[4] = button.innerHTML;
+
+    button = unclickedSquares[1];
+    fireEvent.click(button);
+    expect(button.innerHTML).toBe("X");
+    squareValues[1] = button.innerHTML;
+
+    button = unclickedSquares[5];
+    fireEvent.click(button);
+    expect(button.innerHTML).toBe("O");
+    squareValues[5] = button.innerHTML;
+
+    button = unclickedSquares[2];
+    fireEvent.click(button);
+    expect(button.innerHTML).toBe("X");
+    squareValues[2] = button.innerHTML;
+
+    button = unclickedSquares[6];
+    fireEvent.click(button);
+    expect(button.innerHTML).toBe(""); //win, so shouldn't activate!
+
+    expect(checkWin(squareValues)).toBe("X"); //X won!
 
 });
