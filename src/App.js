@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const Square = ({value, onSquareClick}) => {
+export const Square = ({value, onSquareClick}) => {
   return (
     <button className="square" onClick={onSquareClick}>
       {value}
@@ -8,12 +8,11 @@ const Square = ({value, onSquareClick}) => {
   );
 }
 
-export function Board() {
+export const Board = () => {
   const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState([]);
 
-  function handleClick(i) {
-    
+  const handleClick = (i) => {
     //don't change if full
     if (squares[i] || checkWin(squares)) {
       return;
