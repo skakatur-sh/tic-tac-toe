@@ -91,6 +91,16 @@ ul {
   flex-direction: row;
 }
 
-/* .game-info {
+.reset {
+  margin-top: 20px;
+}
+
+.resetButton {
+  font-size: 40px;
+  background-color: blueviolet;
+  color: silver;
+}
+
+.game-info {
   margin-left: 20px;
-} */
+}
