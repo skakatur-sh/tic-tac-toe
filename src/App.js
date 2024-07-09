@@ -36,14 +36,14 @@ export const Board = () => {
   const winner = checkWin(squares);
   let status;
   if (winner) {
-    status = "Winner: " + winner;
+    status = "Winner: " + winner + "!!";
   }
   else {
     status = "Next turn: " + (xIsNext ? "X" : "O");
   }
 
   return (
-    <>
+    <div className="container">
       <div className="status">{status}</div>
       <div className="board-row">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
@@ -60,7 +60,7 @@ export const Board = () => {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
-    </>
+    </div>
   );
 }
 
