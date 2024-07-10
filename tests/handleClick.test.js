@@ -3,9 +3,9 @@
  */
 
 import React from "react";
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 
-import { Board, Square } from "../src/App"
+import { Board } from "../src/App"
 import { checkWin } from "../src/App";
 
 
